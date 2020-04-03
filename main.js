@@ -1,4 +1,10 @@
 const {
+  default: installExtension,
+  REACT_DEVELOPER_TOOLS,
+  REDUX_DEVTOOLS
+} = require("electron-devtools-installer")
+
+const {
   app,
   BrowserWindow
 } = require('electron')
@@ -18,6 +24,9 @@ function createWindow() {
   // 起動オプションに、 "--debug"があれば開発者ツールを起動する
   if (process.argv.find((arg) => arg === '--debug')) {
       win.webContents.openDevTools()
+      installExtension([REDUX_DEVTOOLS, REACT_DEVELOPER_TOOLS])
+        .then(name => console.log(name))
+        .catch(err => console.error(err))
   }
   // ブラウザウィンドウを閉じたときのイベントハンドラ
   win.on('closed', () => {

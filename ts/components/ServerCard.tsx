@@ -1,11 +1,13 @@
 import React from 'react'
+import { createClickRunStateBtnAction } from '../actions/ServerActionCreators'
+import store from '../Store'
 
 interface IProps {
+  id: string
   lblName: string
   lblPort: number
   lblPath: string
   isRunning: boolean
-  onClickRunningButton: () => void
 }
 
 export class ServerCard extends React.Component<IProps, {}> {
@@ -26,6 +28,6 @@ export class ServerCard extends React.Component<IProps, {}> {
   }
 
   private _onClickRunningButton = () => {
-    this.props.onClickRunningButton();
+    store.dispatch(createClickRunStateBtnAction(this.props.id, !this.props.isRunning))
   }
 }

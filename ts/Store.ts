@@ -1,6 +1,6 @@
 import { combineReducers, createStore } from 'redux'
-import { ServerCardReducer } from './reducer/ServerCardReducer'
-import IServerCard from './states/IServerCard'
+import { ServerReducer } from './reducer/ServerReducer'
+import { IServerList } from './states/IServer'
 
 
 /**
@@ -8,11 +8,11 @@ import IServerCard from './states/IServerCard'
  * プロパティには管理する child_state を指定する
  */
 export interface IState {
-  ServerCard: IServerCard
+  serverList: IServerList
 }
 
 const combinedReducer = combineReducers<IState>({
-  ServerCard: ServerCardReducer,
+  serverList: ServerReducer,
 })
 
 // グローバルオブジェクトとして store を作成
